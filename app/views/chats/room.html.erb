@@ -1,0 +1,73 @@
+<script>
+  $(function() {
+    // Create a new client to connect to Faye
+    // var fayeUrl = 'http://10.1.8.241:9292/faye'
+    var fayeUrl = 'http://3e1c021e.ngrok.com/faye'
+    var client = new Faye.Client(fayeUrl);
+    //for loalhost, all you need is var client = new Faye.Client('http://localhost:9292/faye')
+
+
+// Subscribe to the public channel. This allows connected users to receive chats.this the <p> tags are going to be used  to take.  Its a method that takes in two arguments.  Where it subscribes to and then the data or mesage.(http://faye.jcoglan.com/browser/subscribing.html). this is how people receive other peoples chats.
+    var public_subscription = client.subscribe('/messages/public', function(data) {
+      $('<p></p>').html(data.username + ": " + data.msg).appendTo('#chat_room');
+    });
+
+     // Our own private channel. Allows an individual to receive messages on a private terminal.
+    var private_subscription = client.subscribe('/messages/private/<%= session[:username] %>', function(data) {
+      $('<p></p>').addClass('private').html(data.username + ": " + data.msg).appendTo('#chat_room');
+    });
+
+
+    // Handle form submissions and post messages to faye
+      // Publish the message to the public channel. This needs to include a message and data attribute upon submission.
+
+
+    $('#new_message_form').submit(function(){
+      // Publish the message to the public channel (http://faye.jcoglan.com/browser/publishing.html). this is how a user submits to the chat room. via the pubish method. For private messages, if the message has a value that matches an @
+
+      //the private method is saying if  message contains an @ symbol that comes from the id message form, publish the message to the private message channel of the matches[1]= to the username (messages/private/user) and pass in the user plus the message. matches
+
+
+      //  if (matches = $('#message').val().match(/@(.+) (.+)/)) {
+      //   client.publish('/messages/private/' + matches[1], {
+      //     username: '<%= session[:username] %>',
+      //     msg: matches[2]
+      //     // the msg matches[1] returns the first
+      //   });
+      // }
+        // adding a chat robot
+      if (matches= $('#message').val().match(/@ROBOT/)){
+        client.publish('/messages/public',{
+          // username: '<%="ROBOT"%>',
+          username: "ROBOT",
+          msg: "I HAZ ALL THE JAVASCRIPTS!"
+        });
+      }
+
+      else {
+        // It's a public message
+        client.publish('/messages/public', {
+          username: '<%= session[:username] %>',
+          msg: $('#message').val()
+          });
+      }
+
+      // Clear the message box
+      $('#message').val('');
+
+      // Don't actually submit the form, otherwise the page will refresh.
+      return false;
+    });
+  });
+</script>
+
+<div class="chat_container">
+  <div id="chat_room">
+    <p class="alert"> Welcome to the chat room <%= session[:username] %>! </p>
+  </div>
+
+  <form id="new_message_form">
+    <input type="text" id="message" name="message">
+    <input type="submit" value="Send">
+  </form>
+</div>

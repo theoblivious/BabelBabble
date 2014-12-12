@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
       user.profile_url = info.urls.send(provider.capitalize.to_sym)
       user.save!
       user
+# need to add score somehow...
     end
   end
  end
