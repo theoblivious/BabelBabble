@@ -2,7 +2,7 @@
   $(function() {
     // Create a new client to connect to Faye
     // var fayeUrl = 'http://10.1.8.241:9292/faye'
-    var fayeUrl = 'http://3e1c021e.ngrok.com/faye'
+    var fayeUrl = 'http://localhost:9292/faye'
     var client = new Faye.Client(fayeUrl);
     //for loalhost, all you need is var client = new Faye.Client('http://localhost:9292/faye')
 
@@ -47,7 +47,7 @@
       else {
         // It's a public message
         client.publish('/messages/public', {
-          username: '<%= session[:username] %>',
+          username: '<%= current_user.name %>',
           msg: $('#message').val()
           });
       }
@@ -63,7 +63,7 @@
 
 <div class="chat_container">
   <div id="chat_room">
-    <p class="alert"> Welcome to the chat room <%= session[:username] %>! </p>
+    <p class="alert"> Welcome to the chat room <%= [:user] %>! </p>
   </div>
 
   <form id="new_message_form">
