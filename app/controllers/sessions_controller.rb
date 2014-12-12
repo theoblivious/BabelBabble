@@ -11,7 +11,7 @@ end
     user = User.from_omniauth(request.env['omniauth.auth'])
     cookies[:user_id] = user.id
     flash[:success] = "Hello, #{user.name}!"
-    redirect_to root_url
+    redirect_to "/chatroom"
   end
 
   def destroy
