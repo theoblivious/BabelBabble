@@ -4,7 +4,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
 gem 'thin'
-gem 'faye'
+# gem 'faye'
+gem 'faye-rails', '~> 2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
