@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require faye
-//= require comments
 
 
 // the comments might need to be changed.
+//  might need to add the line for require comments
