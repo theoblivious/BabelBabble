@@ -60,9 +60,6 @@ GEM
       multi_json (>= 1.0.0)
       rack (>= 1.0.0)
       websocket-driver (>= 0.3.0)
-    faye-rails (2.0.0)
-      eventmachine (~> 1.0.0)
-      faye (~> 1.0.1)
     faye-websocket (0.9.0)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.0)
@@ -172,7 +169,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
-  faye-rails (~> 2.0)
+  faye
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook
