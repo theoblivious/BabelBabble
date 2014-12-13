@@ -60,9 +60,12 @@ GEM
       multi_json (>= 1.0.0)
       rack (>= 1.0.0)
       websocket-driver (>= 0.3.0)
-    faye-websocket (0.8.0)
+    faye-rails (2.0.0)
+      eventmachine (~> 1.0.0)
+      faye (~> 1.0.1)
+    faye-websocket (0.9.0)
       eventmachine (>= 0.12.0)
-      websocket-driver (>= 0.4.0)
+      websocket-driver (>= 0.5.0)
     hashie (3.3.2)
     hike (1.2.3)
     http_parser.rb (0.6.0)
@@ -160,14 +163,16 @@ GEM
     uglifier (2.6.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    websocket-driver (0.4.0)
+    websocket-driver (0.5.0)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
-  faye
+  faye-rails (~> 2.0)
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook
