@@ -1,5 +1,5 @@
-# # this starts the faye server
+# this starts the faye server
 
-# require 'faye'
-# bayeux = Faye::RackAdapter.new(:mount => '/faye', :timeout => 25)
-# run bayeux
+require 'faye'
+bayeux = Faye::RackAdapter.new(:mount => '/faye', :timeout => 25)
+run bayeux
