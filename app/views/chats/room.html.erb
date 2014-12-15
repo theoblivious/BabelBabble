@@ -1,8 +1,9 @@
 <script>
   $(function() {
     // Create a new client to connect to Faye
+    var fayeUrl = '/faye'
     // var fayeUrl = 'http://10.1.8.241:9292/faye'
-    var fayeUrl = 'https://lit-ravine-1969.herokuapp.com/faye'
+    // var fayeUrl = 'https://lit-ravine-1969.herokuapp.com/faye'
     var client = new Faye.Client(fayeUrl);
     //for loalhost, all you need is var client = new Faye.Client('http://localhost:9292/faye')
 
@@ -22,42 +23,42 @@
       // Publish the message to the public channel. This needs to include a message and data attribute upon submission.
 
 
-    $('#new_message_form').submit(function(){
-      // Publish the message to the public channel (http://faye.jcoglan.com/browser/publishing.html). this is how a user submits to the chat room. via the pubish method. For private messages, if the message has a value that matches an @
+    // $('#new_message_form').submit(function(){
+    //   // Publish the message to the public channel (http://faye.jcoglan.com/browser/publishing.html). this is how a user submits to the chat room. via the pubish method. For private messages, if the message has a value that matches an @
 
-      //the private method is saying if  message contains an @ symbol that comes from the id message form, publish the message to the private message channel of the matches[1]= to the username (messages/private/user) and pass in the user plus the message. matches
+    //   //the private method is saying if  message contains an @ symbol that comes from the id message form, publish the message to the private message channel of the matches[1]= to the username (messages/private/user) and pass in the user plus the message. matches
 
 
-      //  if (matches = $('#message').val().match(/@(.+) (.+)/)) {
-      //   client.publish('/messages/private/' + matches[1], {
-      //     username: '<%= session[:username] %>',
-      //     msg: matches[2]
-      //     // the msg matches[1] returns the first
-      //   });
-      // }
-        // adding a chat robot
-      if (matches= $('#message').val().match(/@ROBOT/)){
-        client.publish('/messages/public',{
-          // username: '<%="ROBOT"%>',
-          username: "ROBOT",
-          msg: "I HAZ ALL THE JAVASCRIPTS!"
-        });
-      }
+    //   //  if (matches = $('#message').val().match(/@(.+) (.+)/)) {
+    //   //   client.publish('/messages/private/' + matches[1], {
+    //   //     username: '<%= session[:username] %>',
+    //   //     msg: matches[2]
+    //   //     // the msg matches[1] returns the first
+    //   //   });
+    //   // }
+    //     // adding a chat robot
+    //   if (matches= $('#message').val().match(/@ROBOT/)){
+    //     client.publish('/messages/public',{
+    //       // username: '<%="ROBOT"%>',
+    //       username: "ROBOT",
+    //       msg: '<%= Quiz.all.sample.question %>'
+    //     });
+    //   }
 
-      else {
-        // It's a public message
-        client.publish('/messages/public', {
-          username: '<%= current_user.name %>',
-          msg: $('#message').val()
-          });
-      }
+    //   else {
+    //     // It's a public message
+    //     client.publish('/messages/public', {
+    //       username: '<%= current_user.name %>',
+    //       msg: $('#message').val()
+    //       });
+    //   }
 
-      // Clear the message box
-      $('#message').val('');
+    //   // Clear the message box
+    //   $('#message').val('');
 
-      // Don't actually submit the form, otherwise the page will refresh.
-      return false;
-    });
+    //   // Don't actually submit the form, otherwise the page will refresh.
+    //   return false;
+    // });
   });
 </script>
 
@@ -66,8 +67,13 @@
     <p class="alert"> Welcome to the chat room <%= current_user.name %>! </p>
   </div>
 
-  <form id="new_message_form">
+  <!-- <form id="new_message_form">
     <input type="text" id="message" name="message">
     <input type="submit" value="Send">
-  </form>
+  </form> -->
+  <%= form_tag chat_messages_path, remote: true do |f| %>
+    <%= text_field_tag :message %>
+    <%= submit_tag "Send" %>
+  <% end %>
+
 </div>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'chats/room'
+  resources :chat_messages, only: :create
 
   get 'sessions/create'
 
