@@ -10,6 +10,10 @@ class ChatMessagesController < ApplicationController
 # TODO
     #  if message =='@ROBOT_QUIZ'  post a question
     # if message == '@ANSWER' see if its correct....sorry that isnt the correct answer.
+    #put in the logic in the model so that I can specify that:
+    # current_question=  the random question sample
+    #  current_answer = the random answer to that question.
+
 
 
 # running all publishing events through faye in our controller.
