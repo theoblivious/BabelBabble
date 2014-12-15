@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
 
   def create
     user = User.from_omniauth(request.env['omniauth.auth'])
-    current_user = user
+    self.current_user = user
+    Rails.logger.info "current_user=#{self.current_user}"
     cookies[:user_id] = user.id
     flash[:success] = "Hello, #{user.name}!"
     redirect_to "/chatroom"
