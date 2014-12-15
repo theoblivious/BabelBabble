@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   protected
 # this makes it available to all of our controllers since everything inherits from Application Controller
   def current_user
-    @current_user
+    # use anonymous user to support current_user interface when not logged in.
+    anonymous_user = OpenStruct.new(name: 'Anonymous')
+    @current_user ||= anonymous_user
   end
 
   def current_user=(value)
