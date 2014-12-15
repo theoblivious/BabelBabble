@@ -9,6 +9,8 @@ Bundler.require(*Rails.groups)
 module DNDBabelBabble
   class Application < Rails::Application
 
+config.middleware.delete Rack::Lock
+config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25
 
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -22,5 +24,8 @@ module DNDBabelBabble
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # TODO: configure via Figaro
+    # config.requires_authentication = true # default.  Override in specific env.
   end
 end

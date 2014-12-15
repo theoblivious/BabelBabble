@@ -34,4 +34,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # We don't want authentication in development.  Defaults to true.
+  # TODO: configure via Figaro
+  # config.requires_authentication = false
+
 end
