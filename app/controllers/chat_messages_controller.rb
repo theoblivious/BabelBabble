@@ -6,6 +6,10 @@ class ChatMessagesController < ApplicationController
     if message == '@ROBOT'
       message_user = 'NUMBER 5'
       message = "I haz ALL the javascripts!  Want some?"
+    elsif message == '@ROBOT_QUIZ'
+      message_user = 'ROBOT_QUIZ'
+      message = Quiz.all.sample.question
+
     end
 # TODO
     #  if message =='@ROBOT_QUIZ'  post a question
