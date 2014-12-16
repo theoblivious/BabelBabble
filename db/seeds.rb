@@ -8,8 +8,12 @@
 require 'csv'
 
 CSV.foreach(File.join(Rails.root, 'db/random_questions.csv')) do |row|
-  question = row[0]
-  answer = row[1]
+  # chatroom_id = row[0].to_i
+  question = row[1]
+  answer = row[2]
 
-  Quiz.create( question: question, answer: answer)
+  Quiz.create(chatroom_id: 1, question: question, answer: answer)
+
+
 end
+Chatroom.create(quiz_id: 1)

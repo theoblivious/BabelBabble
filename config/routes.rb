@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'chats/room'
+  get 'chatroom/room'
   resources :chat_messages, only: :create
 
   get 'sessions/create'
@@ -14,7 +14,7 @@ get '/auth/:provider/callback', to: 'sessions#create'
 get '/auth/failure', to: 'sessions#auth_fail'
 get '/sign_out', to: 'sessions#destroy', as: :sign_out
 
-get  '/chatroom' => 'chats#room', :as => :chat
+get  '/chatroom' => 'chatroom#room', :as => :chat
 
 
 

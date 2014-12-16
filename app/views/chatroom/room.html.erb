@@ -30,8 +30,11 @@
     <input type="text" id="message" name="message">
     <input type="submit" value="Send">
   </form> -->
-  <%= form_tag chat_messages_path, remote: true do |f| %>
+  <%= form_tag chat_messages_path, remote: true do %>
     <%= text_field_tag :message %>
+    <%= hidden_field_tag :chatroom_id, 1 %>
+
+    <!-- we are leaving this here so that later we can dynamically call on different chatrooms. the above form should be changed to :chatroom_id , @chatroom.id instead of a value of 1-->
     <%= submit_tag "Send" %>
   <% end %>
 
