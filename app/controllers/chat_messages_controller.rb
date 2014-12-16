@@ -33,11 +33,12 @@ class ChatMessagesController < ApplicationController
         message = "Quiz is already running."
       end
     when chatroom.quiz.answer
-      chatroom.update(game_mode: true)
-      puts "THINGSSSS"
-      message_user = "Robot"
-      message = current_user.name + " got the question correct!"
-      chatroom.update(game_mode: false)
+      if chatroom.game_mode
+
+        message_user = "Robot"
+        message = current_user.name + " got the question correct!"
+        chatroom.update(game_mode: false)
+      end
 
     when /@wdi3/
       message_user = "#{current_user.name}"
