@@ -7,26 +7,19 @@ class ChatMessagesController < ApplicationController
     message = params[:message]
     # we are  passing in the chatroom id currently to just a chatroom of 1
     chatroom = Chatroom.find(params[:chatroom_id])
-    # puts (chatroom.game_mode)
-    # puts (chatroom.quiz.answer == message)
-    # puts ((chatroom.game_mode) && (chatroom.quiz.answer == message))
-
-    # if ((chatroom.game_mode) && (chatroom.quiz.answer == message))
-    #   message_user = "Robot"
-    #   message = current_user.name + " got the question correct!"
-    # end
     case message
     when /@ROBOT/i
-      message_user = 'NUMBER 5'
+      message_user = 'ROBOT'
       message = "I haz ALL the javascripts!  Want some?"
     when /@QUIZ/i
       if !chatroom.game_mode #we want game mode default to false
         random_quiz = Quiz.all.sample
         random_id= random_quiz.id  #dont need this maybe up for deletion.
         random_question= random_quiz.question
-        random_answer = random_quiz.answer
+
         message_user = 'ROBOT_QUIZ'
         message = random_question
+
         chatroom.update(quiz_id: random_id)
         chatroom.update(game_mode: true)
       else
@@ -37,6 +30,9 @@ class ChatMessagesController < ApplicationController
 
         message_user = "Robot"
         message = current_user.name + " got the question correct!"
+        score = current_user.score
+        current_user.update(score: score+1)
+
         chatroom.update(game_mode: false)
       end
 
