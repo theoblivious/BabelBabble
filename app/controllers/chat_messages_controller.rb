@@ -32,7 +32,6 @@ class ChatMessagesController < ApplicationController
         message = current_user.name + " got the question correct!"
         score = current_user.score
         current_user.update(score: score+1)
-
         chatroom.update(game_mode: false)
       end
 
