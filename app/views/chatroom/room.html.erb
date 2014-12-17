@@ -36,10 +36,16 @@
       <% end %>
    </div>
 
-  <div id= "score_box" class = "col-md-4">
+    <div id= "score_box" class = "col-md-4">
       <h1>Top Scorers</h1>
+      <ul>
+        <% @users.each do |user| %>
+        <li><%= user.name %>, <%= user.score %></li>
+        <% end %>
+      <!--   <li><%= current_user.name %>, <%= current_user.score %></li> -->
+      </ul>
+    </div>
   </div>
-</div>
 </div>
   <!-- <form id="new_message_form">
     <input type="text" id="message" name="message">

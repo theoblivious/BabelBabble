@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :authenticate_user
+  attr_accessor :current_user
 
   protected
 
@@ -24,14 +25,23 @@ class ApplicationController < ActionController::Base
     redirect_to login_url, notice: "You must be logged in to access." unless current_user
   end
 
-# this makes it available to all of our controllers since everything inherits from Application Controller
-  def current_user
-    @current_user
+  # this makes it available to all of our controllers since everything inherits from Application Controller
+  # def current_user
+  #   @current_user
+  # end
+
+  # def current_user=(value)
+  #   @current_user = value
+  # end
+
+  def user
+    @user
   end
 
-  def current_user=(value)
-    @current_user = value
+  def user=(value)
+    @user = value
   end
-# this makes it available to our views.
-  helper_method :current_user
+
+  # this makes it available to our views.
+  helper_method :current_user, :user
 end
