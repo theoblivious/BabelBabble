@@ -51,18 +51,6 @@ $(document).ready(function() {
            });
 
 
-            // $.get("/chatroom/room", function(data) {
-            //     $("ol").html(data);
-            //     alert("Load was performed.");
-            //     // success: function(data) {
-
-            //     });
-            // });
-
-            event.preventDefault();
-        });
-
-
 
 
 });
