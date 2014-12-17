@@ -19,7 +19,8 @@ $(document).ready(function() {
     //   $('<p></p>').addClass('private').html(data.username + ": " + data.msg).appendTo('#chat_room');
     // });
     $(".chat_container").submit(function(event) {
-        url: '/chatroom/room',
+        $.ajax({
+            url: '/chatroom/room',
             dataType: 'json',
             method: 'GET',
             // data dont need since we are GET
