@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem "twitter-bootstrap-rails"
 
 gem 'thin'
 # gem 'faye'
