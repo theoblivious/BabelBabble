@@ -1,7 +1,7 @@
 // # Place all the behaviors and hooks related to the matching controller here.
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
-
+$( document ).ready(function() {
   $(function() {
     // Create a new client to connect to Faye
     var fayeUrl = '/faye';
@@ -19,9 +19,14 @@
     //   $('<p></p>').addClass('private').html(data.username + ": " + data.msg).appendTo('#chat_room');
     // });
 
-  });
+  }),
+
+$( ".chat_container" ).submit(function(event) {
+  alert( "Handler for .submit() called." );
+  event.preventDefault();
+});
 
 
-$( document ).ready(function() {
+
 
 });
