@@ -30,7 +30,7 @@ class ChatMessagesController < ApplicationController
       if chatroom.game_mode
         message_user = "Robot"
         message = current_user.name + " got the question correct!"
-        score = current_user.score
+        score = self.current_user.score
         self.current_user.update(score: score+1)
         # user_scores= somehting
         chatroom.update(game_mode: false)
