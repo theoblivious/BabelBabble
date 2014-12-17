@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
     unless app_requires_auth
       # use anonymous user to support current_user interface when not logged in.
-      anonymous_user = OpenStruct.new(name: 'Anonymous')
+      anonymous_user = AnonymousUser.new(name: 'Anonymous')
       self.current_user ||= anonymous_user
     end
 
@@ -44,4 +44,18 @@ class ApplicationController < ActionController::Base
 
   # this makes it available to our views.
   helper_method :current_user, :user
+end
+
+# created to update score and user for anonymous
+class AnonymousUser
+  attr_accessor :name, :score
+  def initialize(params = {})
+    update(params)
+  end
+
+  def update(params)
+    params.each do |key, value|
+      self.send("#{key}=", value)
+    end
+  end
 end
