@@ -26,15 +26,19 @@ class ChatMessagesController < ApplicationController
       else
         message = "Quiz is already running."
       end
-    when chatroom.quiz.answer
+    when chatroom.quiz.answer.downcase
       if chatroom.game_mode
         message_user = "Robot"
         message = current_user.name + " got the question correct!"
         score = self.current_user.score || 0
         self.current_user.update(score: score+1)
-
         chatroom.update(game_mode: false)
       end
+    when /@RESET_QUESTION/i
+      message_user ="RESETBOT"
+      message = "Quiz Reset"
+      chatroom.update(game_mode: false)
+
 
     when /@wdi3/
       message_user = "#{current_user.name}"
