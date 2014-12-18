@@ -1,4 +1,7 @@
 class ChatroomController < ApplicationController
+  def front
+  end
+
   def room
     # we will use this later when we want to specify other chatrooms
     # @chatroom = Chatroom.find(params[:id])
