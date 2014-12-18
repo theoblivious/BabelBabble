@@ -1,4 +1,6 @@
-A Chat application with a twist! Compete with your friends against the robots questions.
+A Chat application with a twist! Compete with your friends against the quiz_bot's questions.
+
+https://babelbabble.herokuapp.com/login
 
 How it works
 ---
