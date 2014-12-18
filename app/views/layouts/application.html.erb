@@ -7,9 +7,27 @@
   <!-- not sure if i need the above tag, need to point it to a different url -->
   <%= csrf_meta_tags %>
 </head>
-<body>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/chatroom">
+        <p> BabelBabble </p>
+      </a>
+    </div>
+      <ul class= "nav navbar-nav navbar-right">
+        <% if cookies[:user_id] %>
+          <p class="navbar-text">Signed in as <%=current_user.name%></a></p>
+       <%else %>
+        <%= link_to "Connect With Facebook", "/auth/facebook" %>
+        <%end%>
+      </ul>
 
-<%= yield %>
+  </div>
+</nav>
+  <%= yield %>
+
+
+
 
 </body>
 </html>
