@@ -4,7 +4,7 @@ How it works
 ---
 Log into Facebook to access the chat application.  You will then be taken to the chatroom where you can:
 
-a. casually speak with other people in the room. /n
+a. casually speak with other people in the room.
 
 b. prompt the quiz_bot to post a question to the chat room, in which everyone has the chance to type in the correct answer. Whomever gets the question correct first, gets a point.  A Leaderboard showing the top scorers will update as users get points.
 
@@ -23,9 +23,13 @@ Chat Commands
 Under the Hood
 ---
 Faye Rails
+
 Thin
+
 Bootstrap
+
 Facebook Oauth
+
 Trello: For issue handling
 
 
