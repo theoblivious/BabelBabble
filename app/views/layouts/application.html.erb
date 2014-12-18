@@ -17,8 +17,10 @@
       <ul class= "nav navbar-nav navbar-right">
         <% if cookies[:user_id] %>
           <p class="navbar-text">Signed in as <%=current_user.name%></a></p>
+          <%= link_to "Sign Out", "/sign_out" %>
        <%else %>
         <%= link_to "Connect With Facebook", "/auth/facebook" %>
+
         <%end%>
       </ul>
 
