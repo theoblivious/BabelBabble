@@ -1,6 +1,6 @@
 
 <div class="chat_container container"  >
- <p class="alert"> Welcome to the chat room <%= current_user.name %>! </p>
+ <p class="alert"> Welcome to the chat room <%= current_user.name %>! Type @info for info!</p>
  <div class = "row">
     <%= form_tag chat_messages_path, remote: true do %>
       <%= text_field_tag :message %>
