@@ -17,3 +17,4 @@ CSV.foreach(File.join(Rails.root, 'db/random_questions.csv')) do |row|
 
 end
 Chatroom.create(quiz_id: 1)
+User.create()
