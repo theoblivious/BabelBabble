@@ -21,6 +21,7 @@ Faye Rails
 Thin
 Bootstrap
 Facebook Oauth
+Trello: For issue handling
 
 
 Future Features
@@ -32,4 +33,4 @@ Future Features
 
 ERD & Wireframes
 ---
-
+http://imgur.com/a/NrGbk
