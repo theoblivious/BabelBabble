@@ -21,10 +21,16 @@ class ChatMessagesController < ApplicationController
         message_user = 'ROBOT_QUIZ'
         message = random_question
 
-        chatroom.update(quiz_id: random_id)
-        chatroom.update(game_mode: true)
+        chatroom.quiz = random_quiz
+        chatroom.game_mode = true
+        chatroom.save!
+
+        # chatroom.update(quiz_id: random_id)
+        # chatroom.update(game_mode: true)
       else
-        message = "Quiz is already running. quiz"
+
+        message = "Quiz is already running. quiz question is '#{chatroom.quiz.question}'"
+
       end
     when chatroom.quiz.answer.downcase
       if chatroom.game_mode

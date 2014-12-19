@@ -18,12 +18,12 @@ $(document).ready(function() {
     // var private_subscription = client.subscribe('/messages/private/<%= session[:username] %>', function(data) {
     //   $('<p></p>').addClass('private').html(data.username + ": " + data.msg).appendTo('#chat_room');
     // });
+    // data dont need since we are GET
     $(".chat_container").submit(function(event) {
         $.ajax({
             url: '/chatroom/room',
             dataType: 'json',
             method: 'GET',
-            // data dont need since we are GET
             success: function(data) {
                 console.log(data);
                 $('#message').val('');
