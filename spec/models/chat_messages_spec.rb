@@ -1,6 +1,6 @@
 require 'spec_helper'
-describe "the poop function" do
-  it "says poop" do
-    hello.should == "poop!"
+describe "the party function" do
+  it "says party" do
+    hello.should == "party"
   end
 end

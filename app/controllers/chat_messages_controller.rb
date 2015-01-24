@@ -25,6 +25,7 @@ class ChatMessagesController < ApplicationController
         chatroom.game_mode = true
         chatroom.save!
 
+
         # chatroom.update(quiz_id: random_id)
         # chatroom.update(game_mode: true)
       else
@@ -52,6 +53,11 @@ class ChatMessagesController < ApplicationController
     when /@info/i
       message_user = "Info_Bot"
       message= "To run a quiz, type @quiz.  To reset a quiz type @reset_question"
+
+# Test drive this out.
+    when /<script>/i
+      message_user= "HACKER"
+      message= "DIS HACK"
     else
       # publish message
     end
